@@ -1,0 +1,19 @@
+{
+  "name": "palette-tex-gen",
+  "version": "1.0.0",
+  "description": "Palette Texture Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Patryk Nusbaum",
+  "license": "ISC",
+  "devDependencies": {
+    "array.chunk": "^1.1.0",
+    "electron": "^8.2.3",
+    "jimp": "^0.10.3",
+    "jpeg-js": "^0.4.0",
+    "pngjs": "^5.0.0"
+  }
+}

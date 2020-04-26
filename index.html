@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="./web/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./web/css/all.min.css"/>
+    <link rel="stylesheet" href="./web/css/bootstrap-colorpicker.min.css"/>
+    <link rel="stylesheet" href="./web/css/web-application.css"/>
+
+    <title>Palette Texture Generator</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Palette Texture Generator</h1>
+    <p>Current file: <span id="open-file">No file open!</span></p>
+
+    <div class="card mt-2">
+        <div class="card-body">
+            <h3 class="card-title">Swatches</h3>
+            <a href="#" class="btn btn-primary mb-2" id="new-swatch">Add new</a>
+            <a href="#" class="btn btn-secondary mb-2" data-toggle="modal" data-target="#importImageModal">Import swatches</a>
+            <div id="swatches-container" class="d-flex flex-row flex-wrap">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="importImageModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Import swatches from image</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="tileWidth">Tile width:</label>
+                        <input type="number" name="tileWidth" id="tileWidth"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="tileHeight">Tile height: </label>
+                        <input type="number" name="tileHeight" id="tileHeight"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="importImageModalImport">Import...</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>window.$ = window.jQuery = require('./web/js/jquery-3.4.1.min.js');</script>
+<script src="./web/js/bootstrap.bundle.min.js"></script>
+<script src="./web/js/jsrender.min.js"></script>
+<script src="./web/js/bootstrap-colorpicker.min.js"></script>
+<script>window.tinycolor = require('./web/js/tinycolor');</script>
+<script src="./web/js/web-application.js"></script>
+
+<script id="swatch-template" type="text/x-jsrender">
+    <div class="swatch border border-primary rounded p-3 mr-2 mb-2" data-id="{{:id}}">
+        <a href="#" class="swatch-remove"><i class="far fa-trash-alt"></i></a>
+        <h6>{{:name}}<a href="#" class="edit-name ml-2"><i class="fas fa-pencil-alt"></i></a></h6>
+        <form class="swatch-name-edit d-none mb-2" action="#" method="POST">
+            <input type="text" name="name" value="{{:name}}"/>
+        </form>
+        <form class="swatch-color-form" action="#" method="POST" onsubmit="return false;">
+            <input class="swatch-color" style="background-color: {{:color}}; color: {{:color}}" value="{{:color}}" tabindex="-1" readonly="readonly"/>
+        </form>
+        <hr />
+        <a href="#" class="btn btn-secondary clone-color" title="Clone"><i class="fas fa-clone"></i></a>
+        <a href="#" class="btn btn-secondary modify-color brighten" title="Brighten"><i class="fas fa-sun"></i></a>
+        <a href="#" class="btn btn-secondary modify-color darken" title="Darken"><i class="fas fa-moon"></i></a>
+    </div>
+</script>
+</body>
+</html>

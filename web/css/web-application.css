@@ -1,0 +1,29 @@
+.swatch {
+    position: relative;
+    width: 256px;
+}
+.swatch-color {
+    width: 100%;
+    height: 32px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.swatch-color:active, .swatch-color:focus {
+    outline: none;
+    border: none;
+}
+.swatch-remove {
+    display: none;
+    position: absolute;
+    right: 10px;
+}
+.swatch:hover .swatch-remove {
+    display: inline;
+}
+.swatch h6 .edit-name {
+    display: none;
+}
+.swatch h6:hover .edit-name {
+    display: inline;
+}
