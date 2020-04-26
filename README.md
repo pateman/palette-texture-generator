@@ -7,10 +7,10 @@ Using this tool I can add as many colors as I like (and even import them from an
 
 The code is not meant to be treated as state-of-the-art and bugs are expected. It is a rather rudimentary application and a very quick attempt at Electron, but it serves my purposes well.
 
-##Running
+## Running
 Make sure you have Node running on your machine (I used `10.15.0`) and just `npm start` the heck of it. :)
 
-##Software used
+## Software used
 * Node 10.15.0
 * Electron 8.2.3
 * jQuery 3.4.1
