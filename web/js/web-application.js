@@ -136,12 +136,16 @@ $(document).ready(() => {
         const $swatchColor = $this.parents('.swatch').find('.swatch-color');
         const currentColor = $swatchColor.cssAsHex('background-color');
 
-        const shouldDarken = $this.hasClass('darken');
+        const op = $this.attr('data-op');
         const col = tinycolor(currentColor);
-        if (shouldDarken) {
+        if (op === 'darken') {
             col.darken(5);
-        } else {
+        } else if (op === 'brighten') {
             col.brighten(5);
+        } else if (op === 'saturate') {
+            col.saturate(5);
+        } else if (op === 'desaturate') {
+            col.desaturate(5);
         }
 
         $swatchColor.css('background-color', col.toString());
