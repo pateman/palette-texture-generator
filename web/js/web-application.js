@@ -29,16 +29,21 @@ $(document).ready(() => {
         $swatchesContainer.append($renderedSwatches);
 
         const $colorPickers = $renderedSwatches.find('.swatch-color');
-        $colorPickers.colorpicker();
-
-        $colorPickers.on('colorpickerChange', (evt) => {
-            const $this = $(evt.target);
-            const newColor = evt.color.toString();
-            $this.css('background-color', newColor);
-            $this.css('color', newColor);
-        });
-        $colorPickers.on('colorpickerHide', (evt) => {
-            updateSwatch($(evt.target));
+        $colorPickers.ColorPicker({
+            onBeforeShow: function () {
+                $(this).ColorPickerSetColor(this.value);
+            },
+            onChange: function (hsb, hex, rgb, el) {
+                const $this = $(el);
+                const newColor = `#${hex}`;
+                $this.css('background-color', newColor);
+                $this.css('color', newColor);
+            },
+            onSubmit: function(hsb, hex, rgb, el) {
+                const $this = $(el);
+                updateSwatch($this);
+                $this.ColorPickerHide();
+            }
         });
     };
 
@@ -63,7 +68,7 @@ $(document).ready(() => {
             name: name,
             color: color
         });
-    }
+    };
 
     ipcRenderer.on('swatches-reload', (evt, arg) => {
         const fileName = arg.fileName;
