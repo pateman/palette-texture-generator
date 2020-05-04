@@ -48,7 +48,7 @@ $(document).ready(() => {
     };
 
     const getDataFromSwatch = ($swatch) => {
-        const id = $swatch.attr('data-id');
+        const id = parseInt($swatch.attr('data-id'));
         const name = $swatch.find('.swatch-name-edit input').val();
         const color = $swatch.find('.swatch-color').cssAsHex('background-color');
         return {
@@ -81,7 +81,7 @@ $(document).ready(() => {
     $('#new-swatch').click((evt) => {
         evt.preventDefault();
 
-        const newId = ($swatchesContainer.find('.swatch').length + 1).toString();
+        const newId = $swatchesContainer.find('.swatch').length + 1;
         const newName = 'New Color';
         const newColor = '#000';
         ipcRenderer.send('swatch-create', {
@@ -95,7 +95,7 @@ $(document).ready(() => {
         evt.preventDefault();
         const $this = $(evt.target);
 
-        const id = $this.parents('.swatch').attr('data-id');
+        const id = parseInt($this.parents('.swatch').attr('data-id'));
         ipcRenderer.send('swatch-remove', {
             id: id
         });
@@ -162,7 +162,7 @@ $(document).ready(() => {
         const $this = $(evt.target);
 
         const {name, color} = getDataFromSwatch($this.parents('.swatch'));
-        const newId = ($swatchesContainer.find('.swatch').length + 1).toString();
+        const newId = $swatchesContainer.find('.swatch').length + 1;
 
         ipcRenderer.send('swatch-create', {
             id: newId,

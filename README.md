@@ -10,6 +10,8 @@ The code is not meant to be treated as state-of-the-art and bugs are expected. I
 ## Running
 Make sure you have Node running on your machine (I used `10.15.0`) and just `npm start` the heck of it. :) You may also need to `npm install` it first. ;)
 
+There's an additional command-line parameter that you can use to display the Developer's Console. If you want to do so, run `npm start -- --dev`.
+
 ## Software used
 * Node 10.15.0
 * Electron 8.2.3

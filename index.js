@@ -50,7 +50,10 @@ function createWindow () {
         win.maximize();
         win.show();
 
-        win.webContents.openDevTools();
+        const args = process.argv.slice(2);
+        if (args.indexOf('--dev') !== -1) {
+            win.webContents.openDevTools();
+        }
         MainApplication.bindEvents();
     });
 }
