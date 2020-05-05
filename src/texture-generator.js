@@ -2,8 +2,8 @@ const arrayChunk = require('array.chunk');
 const util = require('./utilities');
 const Jimp = require('jimp');
 
-const DEFAULT_TILE_WIDTH = 32;
-const DEFAULT_TILE_HEIGHT = 32;
+const DEFAULT_TILE_WIDTH = 8;
+const DEFAULT_TILE_HEIGHT = 8;
 const TILES_PER_ROW = 8;
 
 const pow2ceil = (v) => {
@@ -12,7 +12,7 @@ const pow2ceil = (v) => {
         p <<= 1;
     }
     return p;
-}
+};
 
 const fillWith = (color) => {
     const colorInRgb = util.hexToRgb(color);
@@ -20,7 +20,7 @@ const fillWith = (color) => {
     return function (x, y, offset) {
         this.bitmap.data.writeUInt32BE(colorInt, offset, true);
     }
-}
+};
 
 module.exports = {
     generate: (fileName, swatches) => {
